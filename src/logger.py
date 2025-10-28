@@ -5,9 +5,7 @@ import yaml
 from pathlib import Path
 
 def set_logger_config():
-    path_to_config = (Path(__file__).resolve().parent.parent /
-                       "config" / 
-                       "logger_config.yaml")
+    path_to_config = (Path(__file__).resolve().parent.parent / "config" / "logger_config.yaml")
     try:
         with open(path_to_config, "r") as f:
             config = yaml.safe_load(f)
