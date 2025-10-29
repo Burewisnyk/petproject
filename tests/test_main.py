@@ -1,10 +1,13 @@
 from fastapi.testclient import TestClient
-from src.main import app
+from src.main import app, app_logger
+
 
 client = TestClient(app)
+app_logger.info("Starting tests...")
 
 
 def test_health_check():
+    app_logger.info("Running health check test...")
     response = client.get("/health")
     assert response.status_code == 200
     assert response.json() == {"status": "online"}
@@ -16,6 +19,7 @@ def test_clear_db():
 
 
 def test_add_owners():
+    app_logger.info("Running add owners test...")
     response = client.post("/owners/5")
     data = response.json()
     assert response.status_code == 200

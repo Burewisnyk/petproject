@@ -22,7 +22,7 @@ repos:
     entry: bash -c 'uv run ruff format --check .'
     language: system
     types: [python]
-  - id: unittests
-    name: Python unit tests
-    entry: bash -c 'uv run -m unittest discover -s tests'
+  - id: pytest
+    name: Python unit tests (pytest)
+    entry: bash -c 'PYTHONPATH="$PWD" pytest --tb=short -q tests'
     language: system
