@@ -7,9 +7,11 @@ requires-python = ">=3.12"
 dependencies = [
     "colorlog>=6.10.1",
     "faker>=37.11.0",
-    "fastapi[standard,standart]>=0.120.0",
+    "fastapi[standard]>=0.120.0",
+    "httpx>=0.28.1",
     "pre-commit>=4.3.0",
     "pyproject-parser>=0.13.0",
+    "pytest>=8.4.2",
     "pyyaml>=6.0.3",
     "ruff>=0.14.2",
 ]
