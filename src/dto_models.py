@@ -51,18 +51,20 @@ class SexType(StrEnum):
 
 
 class Owner(BaseModel):
-    id: int = Field(generate_owner_id(), ge=1, description="Owner id")
+    id: int = Field(default_factory=generate_owner_id, ge=0, description="Owner id")
     first_name: str = Field(
         ..., min_length=2, max_length=30, description="Owner's first name"
-    )
+        )
     last_name: str = Field(
         ..., min_length=2, max_length=30, description="Owner's last name"
-    )
-    phone_number: str = Field(..., description="Owner's phone number in E.164 format")
+        )
+    phone_number: str = Field(
+        ..., description="Owner's phone number in E.164 format"
+        )
 
 
 class Pet(BaseModel):
-    id: int = Field(generate_pet_id(), ge=1, description="Pet id")
+    id: int = Field(default_factory=generate_pet_id, ge=0, description="Pet id")
     name: str = Field(..., min_length=3, max_length=25, description="Pet name")
     type: PetType = Field(PetType.UNKNOWN, description="Type of the pet")
     age: int = Field(

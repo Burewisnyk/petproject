@@ -14,14 +14,14 @@ def test_clear_db():
     assert response.status_code == 200
 
 
-def add_owners():
+def test_add_owners():
     response = client.post("/owners/5")
     data = response.json()
     assert response.status_code == 200
     assert len(data) == 5
 
 
-def add_pets():
+def test_add_pets():
     response = client.post("/pets/50")
     data = response.json()
     assert response.status_code == 200

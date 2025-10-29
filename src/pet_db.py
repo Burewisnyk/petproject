@@ -1,5 +1,6 @@
 from faker import Faker
-from .dto_models import Pet, Owner, PetType, SexType, generate_pet_id, generate_owner_id
+from .dto_models import (Pet, Owner, PetType, SexType, generate_pet_id, 
+                         generate_owner_id)
 from .logger import app_logger
 
 # In memory "database"
