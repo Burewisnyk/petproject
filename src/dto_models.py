@@ -54,13 +54,11 @@ class Owner(BaseModel):
     id: int = Field(default_factory=generate_owner_id, ge=0, description="Owner id")
     first_name: str = Field(
         ..., min_length=2, max_length=30, description="Owner's first name"
-        )
+    )
     last_name: str = Field(
         ..., min_length=2, max_length=30, description="Owner's last name"
-        )
-    phone_number: str = Field(
-        ..., description="Owner's phone number in E.164 format"
-        )
+    )
+    phone_number: str = Field(..., description="Owner's phone number in E.164 format")
 
 
 class Pet(BaseModel):
