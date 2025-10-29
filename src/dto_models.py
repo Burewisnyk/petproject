@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, Enum
+from pydantic import BaseModel, Field
 from enum import StrEnum
 from random import randint
 from pet_db import generate_pet_id, generate_owner_id

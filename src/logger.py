@@ -1,6 +1,5 @@
 import logging
 import logging.config
-import colorlog
 import yaml
 from pathlib import Path
 

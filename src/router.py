@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, HTTPException
 from logger import app_logger
 from dto_models import Pet, Owner
 import pet_db as db
