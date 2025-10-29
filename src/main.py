@@ -4,22 +4,24 @@ from pathlib import Path
 from .logger import app_logger
 from .router import router
 
-pyproject = (PyProject.load(Path(__file__).resolve().parent.parent / 
-                            "pyproject.toml")
-             .to_dict().get('project',{}))
+pyproject = (
+    PyProject.load(Path(__file__).resolve().parent.parent / "pyproject.toml")
+    .to_dict()
+    .get("project", {})
+)
 project_version = str(pyproject.get("version", "0.0.0"))
 project_name = str(pyproject.get("name", "pet project"))
 
 app = FastAPI(
     title=project_name,
     version=project_version,
-    description="This is a sample FastAPI pet project."
+    description="This is a sample FastAPI pet project.",
 )
 
 app.include_router(router=router)
+
 
 @app.get("/health", tags=["Health"])
 async def health_check():
     app_logger.debug("Health check endpoint was called.")
     return {"status": "online"}
-
