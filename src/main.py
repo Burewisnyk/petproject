@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from pyproject_parser import PyProject
 from pathlib import Path
-from logger import app_logger
-from router import router
+from .logger import app_logger
+from .router import router
 
 pyproject = (PyProject.load(Path(__file__).resolve().parent.parent / 
                             "pyproject.toml")
@@ -21,5 +21,5 @@ app.include_router(router=router)
 @app.get("/health", tags=["Health"])
 async def health_check():
     app_logger.debug("Health check endpoint was called.")
-    return {"status": "healthy"}
+    return {"status": "online"}
 

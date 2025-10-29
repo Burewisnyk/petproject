@@ -1,7 +1,34 @@
 from pydantic import BaseModel, Field
 from enum import StrEnum
 from random import randint
-from pet_db import generate_pet_id, generate_owner_id
+
+
+# generated pet and owner ID section
+def get_pet_id_generator():
+    "Generate a unique pet ID."
+    current_id = 0
+    while True:
+        current_id += 1
+        yield current_id
+
+def get_owner_id_generator():
+    "Generate a unique pet ID."
+    current_id = 0
+    while True:
+        current_id += 1
+        yield current_id
+
+pet_id_generator = get_pet_id_generator()
+owner_id_generator = get_owner_id_generator()
+
+def generate_pet_id() -> int:
+    "Get the next unique pet ID."
+    return next(pet_id_generator)
+
+def generate_owner_id() -> int:
+    "Get the next unique pet ID."
+    return next(owner_id_generator)
+
 
 class PetType(StrEnum):
     DOG = "Dog"

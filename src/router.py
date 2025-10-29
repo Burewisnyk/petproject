@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
-from logger import app_logger
-from dto_models import Pet, Owner
-import pet_db as db
+from .logger import app_logger
+from .dto_models import Pet, Owner
+import src.pet_db as db
 
 router = APIRouter()
 
@@ -28,24 +28,24 @@ def get_owner_by_id(owner_id: int)-> Owner:
         raise HTTPException(status_code=404, detail="Owner not found")
     return owner
 
-@router.get("/pets/all")
+@router.get("/all/pets", tags=["pet"])
 def get_all_pets()-> list[Pet]:
     app_logger.debug("Fetching all pets")
     return db.get_all_pets()
 
-@router.get("/owners/all")
+@router.get("/all/owners", tags=["owner"])
 def get_all_owners()-> list[Owner]:
     app_logger.debug("Fetching all owners")
     return db.get_all_owners()
 
-@router.post("/pets/{pets_number}, tags=['pet']")
+@router.post("/pets/{pets_number}", tags=['pet'])
 def add_pets(pets_number:int) -> list[Pet]:
     app_logger.debug(f"Generating and adding {pets_number} fake pets")
     pets = db.generate_fake_pets(pets_number)
     db.add_pets(pets)
     return pets
 
-@router.post("/owners/{owners_number}, tags=['owner']")
+@router.post("/owners/{owners_number}", tags=['owner'])
 def add_owners(owners_number:int) -> list[Owner]:
     app_logger.debug(f"Generating and adding {owners_number} fake owners")
     owners = db.generate_fake_owners(owners_number)
