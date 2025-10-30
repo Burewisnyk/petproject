@@ -27,4 +27,4 @@ WORKDIR /app
 RUN uv sync --frozen --no-cache --no-dev
 
 # Run the application.
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD uvicorn src/main:app --host 0.0.0.0 --port $PORT
