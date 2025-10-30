@@ -17,11 +17,7 @@ ENV PATH="/app/.venv/bin:$PATH"
 ENV UV_COMPILE_BYTECODE=1
 
 # Copy the application into the container.
-COPY src /app/src
-COPY config /app/config
-COPY pyproject.toml /app/pyproject.toml
-COPY uv.lock /app/uv.lock
-COPY README.md /app/README.md
+COPY . /app
 
 
 # Install the application dependencies.
