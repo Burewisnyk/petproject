@@ -17,7 +17,12 @@ ENV PATH="/app/.venv/bin:$PATH"
 ENV UV_COMPILE_BYTECODE=1
 
 # Copy the application into the container.
-COPY . /app
+COPY src /app/src
+COPY config /app/config
+COPY pyproject.toml /app/pyproject.toml
+COPY uv.lock /app/uv.lock
+COPY README.md /app/README.md
+
 
 # Install the application dependencies.
 WORKDIR /app
@@ -26,4 +31,4 @@ WORKDIR /app
 RUN uv sync --frozen --no-cache --no-dev
 
 # Run the application.
-CMD ["/app/", "run", "main.py", "--port", "8000", "--host", "0.0.0.0"]
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80"]
